@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import math
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
         self.pbn_C.clicked.connect(self.C)
         self.pbn_CE.clicked.connect(self.C)
         self.pbn_backspace.clicked.connect(self.Backspace)
-        # self.pbn_revers.clicked.connect(self.revers)
+        self.pbn_revers.clicked.connect(self.revers)
 
 
         self.pbn_result.clicked.connect(self.result)
@@ -175,12 +175,14 @@ class Ui_MainWindow(object):
 
             self.label.setText(res)
 
-    # def revers(self):
-    #
-    #     res = abs(self.label.text())
-    #
-    #     print(res)
-    #     # self.label.setText(res)
+    def revers(self):
+
+        text = self.label.text()  # получаем текущий текст из поля
+        if text.startswith('-'):  # если текст начинается с минуса
+            text = text[1:]  # удаляем минус
+        else:
+            text = '-' + text  # добавляем минус
+        self.label.setText(text)  # устанавливаем новый текст в поле
 
     def result(self):
         res = eval(self.label.text())
@@ -189,6 +191,7 @@ class Ui_MainWindow(object):
     def C(self):
         if self.label.text() != '0':
             self.label.setText('0')
+
 
 
 if __name__ == "__main__":
