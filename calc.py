@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -19,6 +20,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, 0, 300, 50))
+
         font = QtGui.QFont()
         font.setPointSize(18)
         font.setBold(True)
@@ -40,9 +42,9 @@ class Ui_MainWindow(object):
         self.pbn_7 = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_7.setGeometry(QtCore.QRect(0, 200, 75, 50))
         self.pbn_7.setObjectName("pbn_7")
-        self.pbn_M_add = QtWidgets.QPushButton(self.centralwidget)
-        self.pbn_M_add.setGeometry(QtCore.QRect(0, 100, 75, 50))
-        self.pbn_M_add.setObjectName("pbn_M_add")
+        # self.pbn_M_add = QtWidgets.QPushButton(self.centralwidget)
+        # self.pbn_M_add.setGeometry(QtCore.QRect(0, 100, 75, 50))
+        # self.pbn_M_add.setObjectName("pbn_M_add")
         self.pbn_C = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_C.setGeometry(QtCore.QRect(0, 150, 75, 50))
         self.pbn_C.setObjectName("pbn_C")
@@ -52,9 +54,9 @@ class Ui_MainWindow(object):
         self.pbn_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_2.setGeometry(QtCore.QRect(70, 300, 75, 50))
         self.pbn_2.setObjectName("pbn_2")
-        self.pbn_MC = QtWidgets.QPushButton(self.centralwidget)
-        self.pbn_MC.setGeometry(QtCore.QRect(70, 100, 75, 50))
-        self.pbn_MC.setObjectName("pbn_MC")
+        # self.pbn_MC = QtWidgets.QPushButton(self.centralwidget)
+        # self.pbn_MC.setGeometry(QtCore.QRect(70, 100, 75, 50))
+        # self.pbn_MC.setObjectName("pbn_MC")
         self.pbn_CE = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_CE.setGeometry(QtCore.QRect(70, 150, 75, 50))
         self.pbn_CE.setObjectName("pbn_CE")
@@ -67,9 +69,9 @@ class Ui_MainWindow(object):
         self.pbn_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_3.setGeometry(QtCore.QRect(140, 300, 75, 50))
         self.pbn_3.setObjectName("pbn_3")
-        self.pbn_M_minus = QtWidgets.QPushButton(self.centralwidget)
-        self.pbn_M_minus.setGeometry(QtCore.QRect(140, 100, 75, 50))
-        self.pbn_M_minus.setObjectName("pbn_M_minus")
+        # self.pbn_MR = QtWidgets.QPushButton(self.centralwidget)
+        # self.pbn_MR.setGeometry(QtCore.QRect(140, 100, 75, 50))
+        # self.pbn_MR.setObjectName("pbn_MR")
         self.pbn_procent = QtWidgets.QPushButton(self.centralwidget)
         self.pbn_procent.setGeometry(QtCore.QRect(140, 150, 75, 50))
         self.pbn_procent.setObjectName("pbn_procent")
@@ -107,7 +109,8 @@ class Ui_MainWindow(object):
 
         self.add_function()
 
-
+        # self.memory = 0
+        # self.memory_stored = False
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Калькулятор"))
@@ -116,16 +119,16 @@ class Ui_MainWindow(object):
         self.pbn_1.setText(_translate("MainWindow", "1"))
         self.pbn_4.setText(_translate("MainWindow", "4"))
         self.pbn_7.setText(_translate("MainWindow", "7"))
-        self.pbn_M_add.setText(_translate("MainWindow", "M+"))
+        # self.pbn_M_add.setText(_translate("MainWindow", "M+"))
         self.pbn_C.setText(_translate("MainWindow", "C"))
         self.pbn_tochka.setText(_translate("MainWindow", "."))
         self.pbn_2.setText(_translate("MainWindow", "2"))
-        self.pbn_MC.setText(_translate("MainWindow", "MC"))
+        # self.pbn_MC.setText(_translate("MainWindow", "MC"))
         self.pbn_CE.setText(_translate("MainWindow", "CE"))
         self.pbn_8.setText(_translate("MainWindow", "8"))
         self.pbn_5.setText(_translate("MainWindow", "5"))
         self.pbn_3.setText(_translate("MainWindow", "3"))
-        self.pbn_M_minus.setText(_translate("MainWindow", "M-"))
+        # self.pbn_MR.setText(_translate("MainWindow", "MR"))
         self.pbn_procent.setText(_translate("MainWindow", "%"))
         self.pbn_9.setText(_translate("MainWindow", "9"))
         self.pbn_6.setText(_translate("MainWindow", "6"))
@@ -153,12 +156,14 @@ class Ui_MainWindow(object):
         self.pbn_multi.clicked.connect(lambda: self.write_number(self.pbn_multi.text()))
         self.pbn_del.clicked.connect(lambda: self.write_number(self.pbn_del.text()))
         self.pbn_tochka.clicked.connect(lambda: self.write_number(self.pbn_tochka.text()))
-        self.pbn_procent.clicked.connect(lambda: self.write_number(self.pbn_procent.text()))
+        self.pbn_procent.clicked.connect(lambda: self.write_number(self.pbn_procent.text(self.write_number())))
         self.pbn_C.clicked.connect(self.C)
         self.pbn_CE.clicked.connect(self.C)
         self.pbn_backspace.clicked.connect(self.Backspace)
         self.pbn_revers.clicked.connect(self.revers)
-
+        # self.pbn_MC.clicked.connect(self.memory_clear)
+        # self.pbn_M_add.clicked.connect(self.memory_add)
+        # self.pbn_MR.clicked.connect(self.memory_recall)
 
         self.pbn_result.clicked.connect(self.result)
     def write_number(self, number):
@@ -174,7 +179,8 @@ class Ui_MainWindow(object):
             res = res[:-1]
 
             self.label.setText(res)
-
+        else:
+            self.label.setText('0')
     def revers(self):
 
         text = self.label.text()  # получаем текущий текст из поля
